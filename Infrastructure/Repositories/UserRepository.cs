@@ -1,4 +1,5 @@
 ﻿using BienComun.Core.DTOs;
+using BienComun.Infrastructure.Repositories;
 using BIenComun.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -21,7 +22,7 @@ public class UserRepository : IUserRepository
     public async Task<bool> ValidateUserAsync(LoginRequestDto loginRequest)
     {
         // Busca un usuario que coincida con el nombre de usuario y la contraseña
-        var user = await _context.Usuarios
+        var user = await _context.Users
             .FirstOrDefaultAsync(u => 
             u.Username == loginRequest.Username && u.Password == loginRequest.Password);
 

@@ -1,0 +1,23 @@
+[
+  {
+    "Id": 1,
+    "Username": "TestUser",
+    "Password": "password123",
+    "Email": "testuser@example.com",
+    "CreatedDate": "2024-11-10T20:00:00Z"
+  },
+  {
+    "Id": 2,
+    "Username": "JaneDoe",
+    "Password": "password456",
+    "Email": "janedoe@example.com",
+    "CreatedDate": "2024-11-10T20:15:00Z"
+  },
+  {
+    "Id": 3,
+    "Username": "JohnSmith",
+    "Password": "password789",
+    "Email": "johnsmith@example.com",
+    "CreatedDate": "2024-11-10T20:30:00Z"
+  }
+]

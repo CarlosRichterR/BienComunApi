@@ -5,11 +5,11 @@ VisualStudioVersion = 17.11.35327.3
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BienComun.Api", "BienComun.Api\BienComun.Api.csproj", "{F09CEFDE-4D56-4235-AFB9-ACBA9D098B35}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BienComun.Core", "Models\BienComun.Core.csproj", "{BE67AC96-A9B8-44CF-B603-E2C649F4D471}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BienComun.Core", "Core\BienComun.Core.csproj", "{BE67AC96-A9B8-44CF-B603-E2C649F4D471}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BIenComun.Infrastructure", "Repositories\BIenComun.Infrastructure.csproj", "{A813D1E5-3CA6-48B0-833E-1083A73ECA7A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BienComun.Infrastructure", "Infrastructure\BienComun.Infrastructure.csproj", "{A813D1E5-3CA6-48B0-833E-1083A73ECA7A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BIenComun.Application", "Services\BIenComun.Application.csproj", "{4AB90F79-79C8-4FC1-A7B2-988A6B589081}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BienComun.Application", "Application\BienComun.Application.csproj", "{4AB90F79-79C8-4FC1-A7B2-988A6B589081}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

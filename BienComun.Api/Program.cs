@@ -1,3 +1,4 @@
+using BienComun.Infrastructure.Repositories;
 using BIenComun.Application.Services;
 using BIenComun.Infrastructure.Data;
 using BIenComun.Infrastructure.Repositories;

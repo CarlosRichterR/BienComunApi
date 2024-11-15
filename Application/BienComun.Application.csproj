@@ -7,8 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Models\BienComun.Core.csproj" />
-    <ProjectReference Include="..\Repositories\BIenComun.Infrastructure.csproj" />
+    <ProjectReference Include="..\Core\BienComun.Core.csproj" />
+    <ProjectReference Include="..\Infrastructure\BienComun.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>
