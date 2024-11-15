@@ -11,30 +11,58 @@ namespace BienComun.Infrastructure.Data;
 
 public static class SeedHelper
 {
-    public static void SeedUsers(ModelBuilder modelBuilder)
+    private static List<T> LoadSeedData<T>(string fileName)
     {
-        // Construir la ruta absoluta para encontrar el archivo JSON de seed
         string currentDirectory = Directory.GetCurrentDirectory();
-        string userRootPath = Path.Combine(currentDirectory, "..", "Infrastructure", "Data", "Seed", "UsersSeed.json");
+        string rootPath = Path.Combine(currentDirectory, "..", "Infrastructure", "Data", "Seed", fileName);
+        string seedPath = Path.GetFullPath(rootPath);
 
-        // Normalizar la ruta para evitar problemas de compatibilidad con distintos sistemas operativos
-        string usersSeedPath = Path.GetFullPath(userRootPath);
-
-        if (File.Exists(usersSeedPath))
+        if (File.Exists(seedPath))
         {
             try
             {
-                var usersData = JsonConvert.DeserializeObject<List<User>>(File.ReadAllText(usersSeedPath));
-                if (usersData != null && usersData.Any())
-                {
-                    modelBuilder.Entity<User>().HasData(usersData);
-                }
+                return JsonConvert.DeserializeObject<List<T>>(File.ReadAllText(seedPath)) ?? new List<T>();
             }
             catch (Exception ex)
             {
                 Console.WriteLine($"Error loading seed data from JSON: {ex.Message}");
             }
         }
+        else
+        {
+            Console.WriteLine($"Seed file not found: {fileName}");
+        }
+
+        return new List<T>();
+    }
+
+    public static void SeedUsers(ModelBuilder modelBuilder)
+    {
+        var usersData = LoadSeedData<User>("UsersSeed.json");
+        if (usersData.Any())
+        {
+            modelBuilder.Entity<User>().HasData(usersData);
+        }
+    }
+
+    public static void SeedProducts(ModelBuilder modelBuilder)
+    {
+        var categoriesData = LoadSeedData<Category>("CategoriesSeed.json");
+        if (categoriesData.Any())
+        {
+            modelBuilder.Entity<Category>().HasData(categoriesData);
+        }
+
+        var suppliersData = LoadSeedData<Supplier>("SuppliersSeed.json");
+        if (suppliersData.Any())
+        {
+            modelBuilder.Entity<Supplier>().HasData(suppliersData);
+        }
+
+        var productsData = LoadSeedData<Product>("ProductsSeed.json");
+        if (productsData.Any())
+        {
+            modelBuilder.Entity<Product>().HasData(productsData);
+        }
     }
 }
-

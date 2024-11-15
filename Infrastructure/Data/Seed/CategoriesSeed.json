@@ -1,0 +1,17 @@
+[
+  {
+    "Id": 1,
+    "Name": "Electrodomésticos",
+    "Description": "Productos de uso doméstico"
+  },
+  {
+    "Id": 2,
+    "Name": "Muebles",
+    "Description": "Mobiliario para el hogar"
+  },
+  {
+    "Id": 3,
+    "Name": "Herramientas",
+    "Description": "Herramientas para bricolaje y trabajo"
+  }
+]

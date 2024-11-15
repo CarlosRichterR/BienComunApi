@@ -14,9 +14,9 @@ namespace BIenComun.Infrastructure.Data
     {
         // Agrega tus DbSets para cada modelo
         public DbSet<User> Users { get; set; }
+        public DbSet<Product> Products { get; set; }
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {
-
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -29,9 +29,9 @@ namespace BIenComun.Infrastructure.Data
             }
 
           SeedHelper.SeedUsers(modelBuilder);
+          SeedHelper.SeedProducts(modelBuilder);
 
         }
-
     }
 
     public static class DesignTimeHelpers

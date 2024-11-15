@@ -1,0 +1,16 @@
+[
+  {
+    "Id": 1,
+    "Name": "Multicenter de Bolivia",
+    "Phone": "12345678",
+    "Email": "info@multicenter.com",
+    "Address": "Av. Principal 123, La Paz"
+  },
+  {
+    "Id": 2,
+    "Name": "Dismac",
+    "Phone": "87654321",
+    "Email": "info@dismac.com",
+    "Address": "Calle Secundaria 456, Santa Cruz"
+  }
+]

@@ -1,5 +1,5 @@
 ﻿using BienComun.Core.DTOs;
-using BienComun.Infrastructure.Repositories;
+using BienComun.Core.Repository;
 using BIenComun.Infrastructure.Repositories;
 using Services;
 using System;

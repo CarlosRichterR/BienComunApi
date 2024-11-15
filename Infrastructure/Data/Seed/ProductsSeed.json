@@ -1,0 +1,162 @@
+[
+  {
+    "Id": 1,
+    "Name": "Refrigerador",
+    "Description": "Refrigerador de dos puertas",
+    "Price": 2500,
+    "SupplierId": 1,
+    "CategoryId": 1
+  },
+  {
+    "Id": 2,
+    "Name": "Velador",
+    "Description": "Velador de madera",
+    "Price": 150,
+    "SupplierId": 2,
+    "CategoryId": 2
+  },
+  {
+    "Id": 3,
+    "Name": "Televisor",
+    "Description": "Televisor LED 55 pulgadas",
+    "Price": 1800,
+    "SupplierId": 1,
+    "CategoryId": 1
+  },
+  {
+    "Id": 4,
+    "Name": "Lavadora",
+    "Description": "Lavadora automática",
+    "Price": 2200,
+    "SupplierId": 2,
+    "CategoryId": 1
+  },
+  {
+    "Id": 5,
+    "Name": "Juego de Vajillas",
+    "Description": "Juego de vajillas de porcelana",
+    "Price": 300,
+    "SupplierId": 1,
+    "CategoryId": 2
+  },
+  {
+    "Id": 6,
+    "Name": "Soldadora Eléctrica",
+    "Description": "Soldadora para uso industrial",
+    "Price": 500,
+    "SupplierId": 2,
+    "CategoryId": 3
+  },
+  {
+    "Id": 7,
+    "Name": "Microondas",
+    "Description": "Horno microondas compacto",
+    "Price": 400,
+    "SupplierId": 1,
+    "CategoryId": 1
+  },
+  {
+    "Id": 8,
+    "Name": "Cafetera",
+    "Description": "Cafetera eléctrica de acero inoxidable",
+    "Price": 120,
+    "SupplierId": 2,
+    "CategoryId": 1
+  },
+  {
+    "Id": 9,
+    "Name": "Sofá",
+    "Description": "Sofá de 3 plazas con tapizado de lino",
+    "Price": 1000,
+    "SupplierId": 1,
+    "CategoryId": 2
+  },
+  {
+    "Id": 10,
+    "Name": "Cama Queen Size",
+    "Description": "Cama de madera con cabecera acolchada",
+    "Price": 1200,
+    "SupplierId": 2,
+    "CategoryId": 2
+  },
+  {
+    "Id": 11,
+    "Name": "Espejo de Pared",
+    "Description": "Espejo decorativo de 1.5 metros",
+    "Price": 250,
+    "SupplierId": 1,
+    "CategoryId": 2
+  },
+  {
+    "Id": 12,
+    "Name": "Licuadora",
+    "Description": "Licuadora de alta velocidad",
+    "Price": 180,
+    "SupplierId": 2,
+    "CategoryId": 1
+  },
+  {
+    "Id": 13,
+    "Name": "Juego de Ollas",
+    "Description": "Juego de ollas de acero inoxidable",
+    "Price": 350,
+    "SupplierId": 1,
+    "CategoryId": 1
+  },
+  {
+    "Id": 14,
+    "Name": "Aspiradora",
+    "Description": "Aspiradora robótica inteligente",
+    "Price": 800,
+    "SupplierId": 2,
+    "CategoryId": 1
+  },
+  {
+    "Id": 15,
+    "Name": "Silla de Comedor",
+    "Description": "Silla de madera con cojín",
+    "Price": 150,
+    "SupplierId": 1,
+    "CategoryId": 2
+  },
+  {
+    "Id": 16,
+    "Name": "Mesa de Centro",
+    "Description": "Mesa de centro de vidrio y acero",
+    "Price": 400,
+    "SupplierId": 2,
+    "CategoryId": 2
+  },
+  {
+    "Id": 17,
+    "Name": "Taladro Eléctrico",
+    "Description": "Taladro inalámbrico de 20V",
+    "Price": 350,
+    "SupplierId": 1,
+    "CategoryId": 3
+  },
+  {
+    "Id": 18,
+    "Name": "Barbacoa",
+    "Description": "Barbacoa de gas con quemadores múltiples",
+    "Price": 1500,
+    "SupplierId": 2,
+    "CategoryId": 3
+  },
+  {
+    "Id": 19,
+    "Name": "Banco de Trabajo",
+    "Description": "Banco de trabajo con almacenamiento",
+    "Price": 600,
+    "SupplierId": 1,
+    "CategoryId": 3
+  },
+  {
+    "Id": 20,
+    "Name": "Cortacésped",
+    "Description": "Cortacésped eléctrico compacto",
+    "Price": 900,
+    "SupplierId": 2,
+    "CategoryId": 3
+  }
+]

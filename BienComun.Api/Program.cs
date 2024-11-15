@@ -1,3 +1,6 @@
+using BienComun.Application.Services;
+using BienComun.Core.Interfaces;
+using BienComun.Core.Repository;
 using BienComun.Infrastructure.Repositories;
 using BIenComun.Application.Services;
 using BIenComun.Infrastructure.Data;
@@ -17,6 +20,8 @@ builder.Services.AddSwaggerGen();
 // Registro de dependencias
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<IProductService, ProductService>();
+builder.Services.AddScoped<IProductRepository, ProductRepository>();
 // Configurar la conexión a PostgreSQL
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<AppDbContext>(options =>

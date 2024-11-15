@@ -1,6 +1,6 @@
 ﻿using BienComun.Core.DTOs;
 
-namespace BienComun.Infrastructure.Repositories
+namespace BienComun.Core.Repository
 {
     public interface IUserRepository
     {

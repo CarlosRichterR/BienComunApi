@@ -3,6 +3,7 @@ using System;
 using BIenComun.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace BienComun.Infrastructure.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241115032544_pro")]
+    partial class pro
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -174,132 +177,6 @@ namespace BienComun.Infrastructure.Migrations
                             Description = "Soldadora para uso industrial",
                             Name = "Soldadora Eléctrica",
                             Price = 500m,
-                            SupplierId = 2
-                        },
-                        new
-                        {
-                            Id = 7,
-                            CategoryId = 1,
-                            Description = "Horno microondas compacto",
-                            Name = "Microondas",
-                            Price = 400m,
-                            SupplierId = 1
-                        },
-                        new
-                        {
-                            Id = 8,
-                            CategoryId = 1,
-                            Description = "Cafetera eléctrica de acero inoxidable",
-                            Name = "Cafetera",
-                            Price = 120m,
-                            SupplierId = 2
-                        },
-                        new
-                        {
-                            Id = 9,
-                            CategoryId = 2,
-                            Description = "Sofá de 3 plazas con tapizado de lino",
-                            Name = "Sofá",
-                            Price = 1000m,
-                            SupplierId = 1
-                        },
-                        new
-                        {
-                            Id = 10,
-                            CategoryId = 2,
-                            Description = "Cama de madera con cabecera acolchada",
-                            Name = "Cama Queen Size",
-                            Price = 1200m,
-                            SupplierId = 2
-                        },
-                        new
-                        {
-                            Id = 11,
-                            CategoryId = 2,
-                            Description = "Espejo decorativo de 1.5 metros",
-                            Name = "Espejo de Pared",
-                            Price = 250m,
-                            SupplierId = 1
-                        },
-                        new
-                        {
-                            Id = 12,
-                            CategoryId = 1,
-                            Description = "Licuadora de alta velocidad",
-                            Name = "Licuadora",
-                            Price = 180m,
-                            SupplierId = 2
-                        },
-                        new
-                        {
-                            Id = 13,
-                            CategoryId = 1,
-                            Description = "Juego de ollas de acero inoxidable",
-                            Name = "Juego de Ollas",
-                            Price = 350m,
-                            SupplierId = 1
-                        },
-                        new
-                        {
-                            Id = 14,
-                            CategoryId = 1,
-                            Description = "Aspiradora robótica inteligente",
-                            Name = "Aspiradora",
-                            Price = 800m,
-                            SupplierId = 2
-                        },
-                        new
-                        {
-                            Id = 15,
-                            CategoryId = 2,
-                            Description = "Silla de madera con cojín",
-                            Name = "Silla de Comedor",
-                            Price = 150m,
-                            SupplierId = 1
-                        },
-                        new
-                        {
-                            Id = 16,
-                            CategoryId = 2,
-                            Description = "Mesa de centro de vidrio y acero",
-                            Name = "Mesa de Centro",
-                            Price = 400m,
-                            SupplierId = 2
-                        },
-                        new
-                        {
-                            Id = 17,
-                            CategoryId = 3,
-                            Description = "Taladro inalámbrico de 20V",
-                            Name = "Taladro Eléctrico",
-                            Price = 350m,
-                            SupplierId = 1
-                        },
-                        new
-                        {
-                            Id = 18,
-                            CategoryId = 3,
-                            Description = "Barbacoa de gas con quemadores múltiples",
-                            Name = "Barbacoa",
-                            Price = 1500m,
-                            SupplierId = 2
-                        },
-                        new
-                        {
-                            Id = 19,
-                            CategoryId = 3,
-                            Description = "Banco de trabajo con almacenamiento",
-                            Name = "Banco de Trabajo",
-                            Price = 600m,
-                            SupplierId = 1
-                        },
-                        new
-                        {
-                            Id = 20,
-                            CategoryId = 3,
-                            Description = "Cortacésped eléctrico compacto",
-                            Name = "Cortacésped",
-                            Price = 900m,
                             SupplierId = 2
                         });
                 });
