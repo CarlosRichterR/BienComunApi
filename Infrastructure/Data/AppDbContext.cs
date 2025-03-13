@@ -15,6 +15,7 @@ namespace BIenComun.Infrastructure.Data
         // Agrega tus DbSets para cada modelo
         public DbSet<User> Users { get; set; }
         public DbSet<Product> Products { get; set; }
+        public DbSet<GiftList> GiftLists { get; set; }
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {
         }
