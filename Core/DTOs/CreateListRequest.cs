@@ -13,4 +13,6 @@ public class CreateListRequest
     public int GuestCount { get; set; }
     public decimal MinContribution { get; set; }
 
+    public List<ProductQuantityDTO> Products { get; set; } = new List<ProductQuantityDTO>();
+    public ListDetailsDTO ListDetails { get; set; }
 }

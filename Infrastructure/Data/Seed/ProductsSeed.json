@@ -3,7 +3,7 @@
     "Id": 1,
     "Name": "Refrigerador",
     "Description": "Refrigerador de dos puertas",
-    "Price": 2500,
+    "Price": 7500,
     "SupplierId": 1,
     "CategoryId": 1
   },
@@ -11,7 +11,7 @@
     "Id": 2,
     "Name": "Velador",
     "Description": "Velador de madera",
-    "Price": 150,
+    "Price": 550,
     "SupplierId": 2,
     "CategoryId": 2
   },
@@ -19,7 +19,7 @@
     "Id": 3,
     "Name": "Televisor",
     "Description": "Televisor LED 55 pulgadas",
-    "Price": 1800,
+    "Price": 3300,
     "SupplierId": 1,
     "CategoryId": 1
   },
@@ -27,7 +27,7 @@
     "Id": 4,
     "Name": "Lavadora",
     "Description": "Lavadora automática",
-    "Price": 2200,
+    "Price": 4000,
     "SupplierId": 2,
     "CategoryId": 1
   },
@@ -35,7 +35,7 @@
     "Id": 5,
     "Name": "Juego de Vajillas",
     "Description": "Juego de vajillas de porcelana",
-    "Price": 300,
+    "Price": 900,
     "SupplierId": 1,
     "CategoryId": 2
   },
@@ -43,7 +43,7 @@
     "Id": 6,
     "Name": "Soldadora Eléctrica",
     "Description": "Soldadora para uso industrial",
-    "Price": 500,
+    "Price": 1200,
     "SupplierId": 2,
     "CategoryId": 3
   },
@@ -51,7 +51,7 @@
     "Id": 7,
     "Name": "Microondas",
     "Description": "Horno microondas compacto",
-    "Price": 400,
+    "Price": 1500,
     "SupplierId": 1,
     "CategoryId": 1
   },
@@ -59,7 +59,7 @@
     "Id": 8,
     "Name": "Cafetera",
     "Description": "Cafetera eléctrica de acero inoxidable",
-    "Price": 120,
+    "Price": 320,
     "SupplierId": 2,
     "CategoryId": 1
   },
@@ -67,7 +67,7 @@
     "Id": 9,
     "Name": "Sofá",
     "Description": "Sofá de 3 plazas con tapizado de lino",
-    "Price": 1000,
+    "Price": 3000,
     "SupplierId": 1,
     "CategoryId": 2
   },
@@ -75,7 +75,7 @@
     "Id": 10,
     "Name": "Cama Queen Size",
     "Description": "Cama de madera con cabecera acolchada",
-    "Price": 1200,
+    "Price": 5200,
     "SupplierId": 2,
     "CategoryId": 2
   },
@@ -91,7 +91,7 @@
     "Id": 12,
     "Name": "Licuadora",
     "Description": "Licuadora de alta velocidad",
-    "Price": 180,
+    "Price": 480,
     "SupplierId": 2,
     "CategoryId": 1
   },
@@ -99,7 +99,7 @@
     "Id": 13,
     "Name": "Juego de Ollas",
     "Description": "Juego de ollas de acero inoxidable",
-    "Price": 350,
+    "Price": 750,
     "SupplierId": 1,
     "CategoryId": 1
   },

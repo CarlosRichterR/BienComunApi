@@ -3,6 +3,7 @@ using System;
 using BIenComun.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace BienComun.Infrastructure.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250404040745_updateProces")]
+    partial class updateProces
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -40,7 +43,7 @@ namespace BienComun.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Categories");
+                    b.ToTable("Category");
 
                     b.HasData(
                         new
@@ -71,26 +74,9 @@ namespace BienComun.Infrastructure.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("Address")
-                        .HasColumnType("text");
-
-                    b.Property<DateTime?>("CampaignEndDate")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<string>("CampaignEndTime")
-                        .HasColumnType("text");
-
-                    b.Property<DateTime?>("CampaignStartDate")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<string>("CampaignStartTime")
-                        .HasColumnType("text");
-
                     b.Property<string>("CustomEventType")
-                        .HasColumnType("text");
-
-                    b.Property<DateTime?>("EventDate")
-                        .HasColumnType("timestamp with time zone");
+                        .HasMaxLength(50)
+                        .HasColumnType("character varying(50)");
 
                     b.Property<int>("EventType")
                         .HasColumnType("integer");
@@ -98,15 +84,10 @@ namespace BienComun.Infrastructure.Migrations
                     b.Property<int>("GuestCount")
                         .HasColumnType("integer");
 
-                    b.Property<string>("ListName")
-                        .HasColumnType("text");
-
                     b.Property<string>("ListStatus")
                         .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<double[]>("Location")
-                        .HasColumnType("double precision[]");
+                        .HasMaxLength(50)
+                        .HasColumnType("character varying(50)");
 
                     b.Property<decimal>("MinContribution")
                         .HasColumnType("numeric");
@@ -114,32 +95,6 @@ namespace BienComun.Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("GiftLists");
-                });
-
-            modelBuilder.Entity("BienComun.Core.Entities.GiftListProduct", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("GiftListId")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("ProductId")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("Quantity")
-                        .HasColumnType("integer");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("GiftListId");
-
-                    b.HasIndex("ProductId");
-
-                    b.ToTable("GiftListProduct");
                 });
 
             modelBuilder.Entity("BienComun.Core.Entities.Photo", b =>
@@ -409,7 +364,7 @@ namespace BienComun.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Suppliers");
+                    b.ToTable("Supplier");
 
                     b.HasData(
                         new
@@ -490,25 +445,6 @@ namespace BienComun.Infrastructure.Migrations
                         });
                 });
 
-            modelBuilder.Entity("BienComun.Core.Entities.GiftListProduct", b =>
-                {
-                    b.HasOne("BienComun.Core.Entities.GiftList", "GiftList")
-                        .WithMany("Products")
-                        .HasForeignKey("GiftListId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("BienComun.Core.Entities.Product", "Product")
-                        .WithMany()
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("GiftList");
-
-                    b.Navigation("Product");
-                });
-
             modelBuilder.Entity("BienComun.Core.Entities.Photo", b =>
                 {
                     b.HasOne("BienComun.Core.Entities.Product", "Product")
@@ -537,11 +473,6 @@ namespace BienComun.Infrastructure.Migrations
                     b.Navigation("Category");
 
                     b.Navigation("Supplier");
-                });
-
-            modelBuilder.Entity("BienComun.Core.Entities.GiftList", b =>
-                {
-                    b.Navigation("Products");
                 });
 
             modelBuilder.Entity("BienComun.Core.Entities.Product", b =>

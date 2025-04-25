@@ -3,6 +3,7 @@ using System;
 using BIenComun.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace BienComun.Infrastructure.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250408020051_AddGiftListProducts")]
+    partial class AddGiftListProducts
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -71,26 +74,8 @@ namespace BienComun.Infrastructure.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("Address")
-                        .HasColumnType("text");
-
-                    b.Property<DateTime?>("CampaignEndDate")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<string>("CampaignEndTime")
-                        .HasColumnType("text");
-
-                    b.Property<DateTime?>("CampaignStartDate")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<string>("CampaignStartTime")
-                        .HasColumnType("text");
-
                     b.Property<string>("CustomEventType")
                         .HasColumnType("text");
-
-                    b.Property<DateTime?>("EventDate")
-                        .HasColumnType("timestamp with time zone");
 
                     b.Property<int>("EventType")
                         .HasColumnType("integer");
@@ -98,15 +83,9 @@ namespace BienComun.Infrastructure.Migrations
                     b.Property<int>("GuestCount")
                         .HasColumnType("integer");
 
-                    b.Property<string>("ListName")
-                        .HasColumnType("text");
-
                     b.Property<string>("ListStatus")
                         .IsRequired()
                         .HasColumnType("text");
-
-                    b.Property<double[]>("Location")
-                        .HasColumnType("double precision[]");
 
                     b.Property<decimal>("MinContribution")
                         .HasColumnType("numeric");
