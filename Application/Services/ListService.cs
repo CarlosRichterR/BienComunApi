@@ -33,7 +33,11 @@ public class ListService : IListService
             CampaignEndDate = request.ListDetails?.CampaignEndDate,
             CampaignEndTime = request.ListDetails?.CampaignEndTime,
             Location = request.ListDetails?.Location,
-            Address = request.ListDetails?.Address
+            Address = request.ListDetails?.Address,
+            Email = request.ConfirmationData?.Email,
+            Phone = request.ConfirmationData?.Phone,
+            UseMinContribution = request.ConfirmationData?.UseMinContribution ?? false,
+            TermsAccepted = request.ConfirmationData?.TermsAccepted ?? false
         };
 
         // Procesar los productos y sus cantidades

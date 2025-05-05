@@ -21,6 +21,11 @@ namespace BienComun.Core.Entities
         public string? CampaignEndTime { get; set; }
         public double[]? Location { get; set; } // Representa [latitude, longitude]
         public string? Address { get; set; }
+        public string? Email { get; set; }
+        public string? Phone { get; set; }
+        public bool UseMinContribution { get; set; }
+        public bool TermsAccepted { get; set; }
+
         // Nueva colección para los productos
         public virtual ICollection<GiftListProduct> Products { get; set; } = new List<GiftListProduct>();
     }

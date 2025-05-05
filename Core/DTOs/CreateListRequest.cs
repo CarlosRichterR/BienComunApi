@@ -15,4 +15,5 @@ public class CreateListRequest
 
     public List<ProductQuantityDTO> Products { get; set; } = new List<ProductQuantityDTO>();
     public ListDetailsDTO ListDetails { get; set; }
+    public ConfirmationDataDTO ConfirmationData { get; set; }
 }
