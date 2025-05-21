@@ -5,7 +5,10 @@
     "Description": "Refrigerador de dos puertas",
     "Price": 7500,
     "SupplierId": 1,
-    "CategoryId": 1
+    "CategoryId": 1,
+    "ImageUrl": "https://nextlevel.com.bo/cdn/shop/products/Lavadora-Samsung-WD12T754DBN-Merkamax-img-5_1024x1024@2x.png?v=1718831587",
+    "Quantity": 10,
+    "ReferenceUrl": "https://www.lg.com/mx/refrigeradores"
   },
   {
     "Id": 2,
@@ -13,7 +16,10 @@
     "Description": "Velador de madera",
     "Price": 550,
     "SupplierId": 2,
-    "CategoryId": 2
+    "CategoryId": 2,
+    "ImageUrl": "https://nextlevel.com.bo/cdn/shop/products/Lavadora-Samsung-WD12T754DBN-Merkamax-img-5_1024x1024@2x.png?v=1718831587",
+    "Quantity": 15,
+    "ReferenceUrl": "https://www.liverpool.com.mx/tienda/pdp/velador-de-madera/"
   },
   {
     "Id": 3,
@@ -21,7 +27,10 @@
     "Description": "Televisor LED 55 pulgadas",
     "Price": 3300,
     "SupplierId": 1,
-    "CategoryId": 1
+    "CategoryId": 1,
+    "ImageUrl": "https://nextlevel.com.bo/cdn/shop/products/Lavadora-Samsung-WD12T754DBN-Merkamax-img-5_1024x1024@2x.png?v=1718831587",
+    "Quantity": 8,
+    "ReferenceUrl": "https://www.samsung.com/mx/tvs/"
   },
   {
     "Id": 4,
@@ -29,7 +38,10 @@
     "Description": "Lavadora automática",
     "Price": 4000,
     "SupplierId": 2,
-    "CategoryId": 1
+    "CategoryId": 1,
+    "ImageUrl": "https://nextlevel.com.bo/cdn/shop/products/Lavadora-Samsung-WD12T754DBN-Merkamax-img-5_1024x1024@2x.png?v=1718831587",
+    "Quantity": 12,
+    "ReferenceUrl": "https://www.lg.com/mx/lavadoras"
   },
   {
     "Id": 5,
@@ -37,7 +49,10 @@
     "Description": "Juego de vajillas de porcelana",
     "Price": 900,
     "SupplierId": 1,
-    "CategoryId": 2
+    "CategoryId": 2,
+    "ImageUrl": "https://nextlevel.com.bo/cdn/shop/products/Lavadora-Samsung-WD12T754DBN-Merkamax-img-5_1024x1024@2x.png?v=1718831587",
+    "Quantity": 20,
+    "ReferenceUrl": "https://www.liverpool.com.mx/tienda/pdp/juego-de-vajillas/"
   },
   {
     "Id": 6,
@@ -45,7 +60,10 @@
     "Description": "Soldadora para uso industrial",
     "Price": 1200,
     "SupplierId": 2,
-    "CategoryId": 3
+    "CategoryId": 3,
+    "ImageUrl": "https://nextlevel.com.bo/cdn/shop/products/Lavadora-Samsung-WD12T754DBN-Merkamax-img-5_1024x1024@2x.png?v=1718831587",
+    "Quantity": 5,
+    "ReferenceUrl": "https://www.homedepot.com.mx/herramientas/soldadoras"
   },
   {
     "Id": 7,
@@ -53,7 +71,10 @@
     "Description": "Horno microondas compacto",
     "Price": 1500,
     "SupplierId": 1,
-    "CategoryId": 1
+    "CategoryId": 1,
+    "ImageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGlvJg8PYiywWaCNkmV6xo_Rh7YYtyGgLlyA&s",
+    "Quantity": 14,
+    "ReferenceUrl": "https://www.lg.com/mx/microondas"
   },
   {
     "Id": 8,
@@ -61,7 +82,10 @@
     "Description": "Cafetera eléctrica de acero inoxidable",
     "Price": 320,
     "SupplierId": 2,
-    "CategoryId": 1
+    "CategoryId": 1,
+    "ImageUrl": "https://nextlevel.com.bo/cdn/shop/products/Lavadora-Samsung-WD12T754DBN-Merkamax-img-5_1024x1024@2x.png?v=1718831587",
+    "Quantity": 18,
+    "ReferenceUrl": "https://www.oster.com.mx/cafeteras/"
   },
   {
     "Id": 9,
@@ -69,7 +93,10 @@
     "Description": "Sofá de 3 plazas con tapizado de lino",
     "Price": 3000,
     "SupplierId": 1,
-    "CategoryId": 2
+    "CategoryId": 2,
+    "ImageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnHriuHz4o1LjWMi-lGaiTD5GXhZCjTw1ITg&s",
+    "Quantity": 7,
+    "ReferenceUrl": "https://www.liverpool.com.mx/tienda/pdp/sofa/"
   },
   {
     "Id": 10,
@@ -77,86 +104,9 @@
     "Description": "Cama de madera con cabecera acolchada",
     "Price": 5200,
     "SupplierId": 2,
-    "CategoryId": 2
-  },
-  {
-    "Id": 11,
-    "Name": "Espejo de Pared",
-    "Description": "Espejo decorativo de 1.5 metros",
-    "Price": 250,
-    "SupplierId": 1,
-    "CategoryId": 2
-  },
-  {
-    "Id": 12,
-    "Name": "Licuadora",
-    "Description": "Licuadora de alta velocidad",
-    "Price": 480,
-    "SupplierId": 2,
-    "CategoryId": 1
-  },
-  {
-    "Id": 13,
-    "Name": "Juego de Ollas",
-    "Description": "Juego de ollas de acero inoxidable",
-    "Price": 750,
-    "SupplierId": 1,
-    "CategoryId": 1
-  },
-  {
-    "Id": 14,
-    "Name": "Aspiradora",
-    "Description": "Aspiradora robótica inteligente",
-    "Price": 800,
-    "SupplierId": 2,
-    "CategoryId": 1
-  },
-  {
-    "Id": 15,
-    "Name": "Silla de Comedor",
-    "Description": "Silla de madera con cojín",
-    "Price": 150,
-    "SupplierId": 1,
-    "CategoryId": 2
-  },
-  {
-    "Id": 16,
-    "Name": "Mesa de Centro",
-    "Description": "Mesa de centro de vidrio y acero",
-    "Price": 400,
-    "SupplierId": 2,
-    "CategoryId": 2
-  },
-  {
-    "Id": 17,
-    "Name": "Taladro Eléctrico",
-    "Description": "Taladro inalámbrico de 20V",
-    "Price": 350,
-    "SupplierId": 1,
-    "CategoryId": 3
-  },
-  {
-    "Id": 18,
-    "Name": "Barbacoa",
-    "Description": "Barbacoa de gas con quemadores múltiples",
-    "Price": 1500,
-    "SupplierId": 2,
-    "CategoryId": 3
-  },
-  {
-    "Id": 19,
-    "Name": "Banco de Trabajo",
-    "Description": "Banco de trabajo con almacenamiento",
-    "Price": 600,
-    "SupplierId": 1,
-    "CategoryId": 3
-  },
-  {
-    "Id": 20,
-    "Name": "Cortacésped",
-    "Description": "Cortacésped eléctrico compacto",
-    "Price": 900,
-    "SupplierId": 2,
-    "CategoryId": 3
+    "CategoryId": 2,
+    "ImageUrl": "https://nextlevel.com.bo/cdn/shop/products/Lavadora-Samsung-WD12T754DBN-Merkamax-img-5_1024x1024@2x.png?v=1718831587",
+    "Quantity": 6,
+    "ReferenceUrl": "https://www.liverpool.com.mx/tienda/pdp/cama-queen-size/"
   }
 ]

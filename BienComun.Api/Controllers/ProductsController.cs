@@ -19,12 +19,24 @@ public class ProductsController : ControllerBase
 
     // GET: api/products
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<Product>>> GetProducts()
+    public async Task<ActionResult<IEnumerable<ProductDto>>> GetProducts()
     {
         try
         {
             var products = await _productService.GetProductsAsync();
-            return Ok(products);
+            var productDtos = products.Select(p => new ProductDto
+            {
+                Id = p.Id,
+                Name = p.Name,
+                Description = p.Description,
+                Price = p.Price,
+                Supplier = p.Supplier?.Name ?? string.Empty,
+                Category = p.Category?.Name ?? string.Empty,
+                ImageUrl = p.ImageUrl,
+                Quantity = p.Quantity,
+                ReferenceUrl = p.ReferenceUrl
+            });
+            return Ok(productDtos);
         }
         catch (Exception ex)
         {
@@ -34,15 +46,27 @@ public class ProductsController : ControllerBase
 
 
     [HttpGet("paginated")]
-    public async Task<ActionResult<PaginatedResponseDto<Product>>> GetPaginatedProducts([FromQuery] int page = 1, [FromQuery] int pageSize = 10)
+    public async Task<ActionResult<PaginatedResponseDto<ProductDto>>> GetPaginatedProducts([FromQuery] int page = 1, [FromQuery] int pageSize = 10)
     {
         try
         {
             var (products, totalCount) = await _productService.GetPaginatedProductsAsync(page, pageSize);
-            var response = new PaginatedResponseDto<Product>
+            var productDtos = products.Select(p => new ProductDto
+            {
+                Id = p.Id,
+                Name = p.Name,
+                Description = p.Description,
+                Price = p.Price,
+                Supplier = p.Supplier?.Name ?? string.Empty,
+                Category = p.Category?.Name ?? string.Empty,
+                ImageUrl = p.ImageUrl,
+                Quantity = p.Quantity,
+                ReferenceUrl = p.ReferenceUrl
+            });
+            var response = new PaginatedResponseDto<ProductDto>
             {
                 TotalCount = totalCount,
-                Items = products
+                Items = productDtos
             };
             return Ok(response);
         }

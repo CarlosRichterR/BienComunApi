@@ -17,5 +17,8 @@ namespace BienComun.Core.Entities
         public int CategoryId { get; set; } // Reference to the category
         public virtual Category Category { get; set; } = null!; // Navigation to the category
         public virtual ICollection<Photo> Photos { get; set; } = new List<Photo>();
+        public string ImageUrl { get; set; } = string.Empty; // Main image for the product
+        public int? Quantity { get; set; } // Optional stock quantity
+        public string? ReferenceUrl { get; set; } // Optional reference link
     }
 }
