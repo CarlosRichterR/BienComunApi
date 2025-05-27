@@ -3,6 +3,7 @@ using BienComun.Core.Entities;
 using BienComun.Core.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using AutoMapper;
 
 namespace BienComun.Api.Controllers;
 
@@ -11,10 +12,12 @@ namespace BienComun.Api.Controllers;
 public class ProductsController : ControllerBase
 {
     private readonly IProductService _productService;
+    private readonly IMapper _mapper;
 
-    public ProductsController(IProductService productService)
+    public ProductsController(IProductService productService, IMapper mapper)
     {
         _productService = productService;
+        _mapper = mapper;
     }
 
     // GET: api/products
@@ -24,18 +27,7 @@ public class ProductsController : ControllerBase
         try
         {
             var products = await _productService.GetProductsAsync();
-            var productDtos = products.Select(p => new ProductDto
-            {
-                Id = p.Id,
-                Name = p.Name,
-                Description = p.Description,
-                Price = p.Price,
-                Supplier = p.Supplier?.Name ?? string.Empty,
-                Category = p.Category?.Name ?? string.Empty,
-                ImageUrl = p.ImageUrl,
-                Quantity = p.Quantity,
-                ReferenceUrl = p.ReferenceUrl
-            });
+            var productDtos = _mapper.Map<IEnumerable<ProductDto>>(products);
             return Ok(productDtos);
         }
         catch (Exception ex)
@@ -51,18 +43,7 @@ public class ProductsController : ControllerBase
         try
         {
             var (products, totalCount) = await _productService.GetPaginatedProductsAsync(page, pageSize);
-            var productDtos = products.Select(p => new ProductDto
-            {
-                Id = p.Id,
-                Name = p.Name,
-                Description = p.Description,
-                Price = p.Price,
-                Supplier = p.Supplier?.Name ?? string.Empty,
-                Category = p.Category?.Name ?? string.Empty,
-                ImageUrl = p.ImageUrl,
-                Quantity = p.Quantity,
-                ReferenceUrl = p.ReferenceUrl
-            });
+            var productDtos = _mapper.Map<IEnumerable<ProductDto>>(products);
             var response = new PaginatedResponseDto<ProductDto>
             {
                 TotalCount = totalCount,

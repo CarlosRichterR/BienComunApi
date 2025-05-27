@@ -11,4 +11,5 @@ public class ProductDto
     public string ImageUrl { get; set; } = string.Empty;
     public int? Quantity { get; set; }
     public string? ReferenceUrl { get; set; }
+    public string Brand { get; set; } = string.Empty; // Brand of the product
 }

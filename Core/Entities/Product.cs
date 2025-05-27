@@ -20,5 +20,6 @@ namespace BienComun.Core.Entities
         public string ImageUrl { get; set; } = string.Empty; // Main image for the product
         public int? Quantity { get; set; } // Optional stock quantity
         public string? ReferenceUrl { get; set; } // Optional reference link
+        public string Brand { get; set; } = string.Empty; // Brand of the product
     }
 }

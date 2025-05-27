@@ -8,7 +8,8 @@
     "CategoryId": 1,
     "ImageUrl": "https://nextlevel.com.bo/cdn/shop/products/Lavadora-Samsung-WD12T754DBN-Merkamax-img-5_1024x1024@2x.png?v=1718831587",
     "Quantity": 10,
-    "ReferenceUrl": "https://www.lg.com/mx/refrigeradores"
+    "ReferenceUrl": "https://www.lg.com/mx/refrigeradores",
+    "Brand": "Samsung"
   },
   {
     "Id": 2,
@@ -19,7 +20,8 @@
     "CategoryId": 2,
     "ImageUrl": "https://nextlevel.com.bo/cdn/shop/products/Lavadora-Samsung-WD12T754DBN-Merkamax-img-5_1024x1024@2x.png?v=1718831587",
     "Quantity": 15,
-    "ReferenceUrl": "https://www.liverpool.com.mx/tienda/pdp/velador-de-madera/"
+    "ReferenceUrl": "https://www.liverpool.com.mx/tienda/pdp/velador-de-madera/",
+    "Brand": "Samsung"
   },
   {
     "Id": 3,
@@ -30,7 +32,8 @@
     "CategoryId": 1,
     "ImageUrl": "https://nextlevel.com.bo/cdn/shop/products/Lavadora-Samsung-WD12T754DBN-Merkamax-img-5_1024x1024@2x.png?v=1718831587",
     "Quantity": 8,
-    "ReferenceUrl": "https://www.samsung.com/mx/tvs/"
+    "ReferenceUrl": "https://www.samsung.com/mx/tvs/",
+    "Brand": "Samsung"
   },
   {
     "Id": 4,
@@ -41,7 +44,8 @@
     "CategoryId": 1,
     "ImageUrl": "https://nextlevel.com.bo/cdn/shop/products/Lavadora-Samsung-WD12T754DBN-Merkamax-img-5_1024x1024@2x.png?v=1718831587",
     "Quantity": 12,
-    "ReferenceUrl": "https://www.lg.com/mx/lavadoras"
+    "ReferenceUrl": "https://www.lg.com/mx/lavadoras",
+    "Brand": "Samsung"
   },
   {
     "Id": 5,
@@ -52,7 +56,8 @@
     "CategoryId": 2,
     "ImageUrl": "https://nextlevel.com.bo/cdn/shop/products/Lavadora-Samsung-WD12T754DBN-Merkamax-img-5_1024x1024@2x.png?v=1718831587",
     "Quantity": 20,
-    "ReferenceUrl": "https://www.liverpool.com.mx/tienda/pdp/juego-de-vajillas/"
+    "ReferenceUrl": "https://www.liverpool.com.mx/tienda/pdp/juego-de-vajillas/",
+    "Brand": "Samsung"
   },
   {
     "Id": 6,
@@ -63,7 +68,8 @@
     "CategoryId": 3,
     "ImageUrl": "https://nextlevel.com.bo/cdn/shop/products/Lavadora-Samsung-WD12T754DBN-Merkamax-img-5_1024x1024@2x.png?v=1718831587",
     "Quantity": 5,
-    "ReferenceUrl": "https://www.homedepot.com.mx/herramientas/soldadoras"
+    "ReferenceUrl": "https://www.homedepot.com.mx/herramientas/soldadoras",
+    "Brand": "Samsung"
   },
   {
     "Id": 7,
@@ -74,7 +80,8 @@
     "CategoryId": 1,
     "ImageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGlvJg8PYiywWaCNkmV6xo_Rh7YYtyGgLlyA&s",
     "Quantity": 14,
-    "ReferenceUrl": "https://www.lg.com/mx/microondas"
+    "ReferenceUrl": "https://www.lg.com/mx/microondas",
+    "Brand": "Samsung"
   },
   {
     "Id": 8,
@@ -85,7 +92,8 @@
     "CategoryId": 1,
     "ImageUrl": "https://nextlevel.com.bo/cdn/shop/products/Lavadora-Samsung-WD12T754DBN-Merkamax-img-5_1024x1024@2x.png?v=1718831587",
     "Quantity": 18,
-    "ReferenceUrl": "https://www.oster.com.mx/cafeteras/"
+    "ReferenceUrl": "https://www.oster.com.mx/cafeteras/",
+    "Brand": "Samsung"
   },
   {
     "Id": 9,
@@ -96,7 +104,8 @@
     "CategoryId": 2,
     "ImageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnHriuHz4o1LjWMi-lGaiTD5GXhZCjTw1ITg&s",
     "Quantity": 7,
-    "ReferenceUrl": "https://www.liverpool.com.mx/tienda/pdp/sofa/"
+    "ReferenceUrl": "https://www.liverpool.com.mx/tienda/pdp/sofa/",
+    "Brand": "Samsung"
   },
   {
     "Id": 10,
@@ -107,6 +116,7 @@
     "CategoryId": 2,
     "ImageUrl": "https://nextlevel.com.bo/cdn/shop/products/Lavadora-Samsung-WD12T754DBN-Merkamax-img-5_1024x1024@2x.png?v=1718831587",
     "Quantity": 6,
-    "ReferenceUrl": "https://www.liverpool.com.mx/tienda/pdp/cama-queen-size/"
+    "ReferenceUrl": "https://www.liverpool.com.mx/tienda/pdp/cama-queen-size/",
+    "Brand": "Samsung"
   }
 ]
