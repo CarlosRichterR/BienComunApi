@@ -3,6 +3,7 @@ using System;
 using BIenComun.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace BienComun.Infrastructure.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250530194424_mg2")]
+    partial class mg2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -357,36 +360,6 @@ namespace BienComun.Infrastructure.Migrations
                     b.HasIndex("ProductId");
 
                     b.ToTable("ProductImage");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            ImageUrl = "http://localhost:5088/assets/images/refrigerador1.png",
-                            IsThumbnail = false,
-                            ProductId = 1
-                        },
-                        new
-                        {
-                            Id = 2,
-                            ImageUrl = "http://localhost:5088/assets/images/refrigerador2.png",
-                            IsThumbnail = false,
-                            ProductId = 1
-                        },
-                        new
-                        {
-                            Id = 3,
-                            ImageUrl = "http://localhost:5088/assets/images/velador1.jpg",
-                            IsThumbnail = false,
-                            ProductId = 2
-                        },
-                        new
-                        {
-                            Id = 4,
-                            ImageUrl = "http://localhost:5088/assets/images/velador2.jpg",
-                            IsThumbnail = false,
-                            ProductId = 2
-                        });
                 });
 
             modelBuilder.Entity("BienComun.Core.Entities.Supplier", b =>

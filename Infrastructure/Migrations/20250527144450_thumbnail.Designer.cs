@@ -3,6 +3,7 @@ using System;
 using BIenComun.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace BienComun.Infrastructure.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250527144450_thumbnail")]
+    partial class thumbnail
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -213,7 +216,7 @@ namespace BienComun.Infrastructure.Migrations
                             Quantity = 10,
                             ReferenceUrl = "https://www.lg.com/mx/refrigeradores",
                             SupplierId = 1,
-                            ThumbnailUrl = "http://localhost:5088/assets/thumbnails/CarlosRichterOpcion1.jpg"
+                            ThumbnailUrl = "http://localhost:5000/assets/thumbnails/CarlosRichterOpcion1.jpg"
                         },
                         new
                         {
@@ -226,7 +229,7 @@ namespace BienComun.Infrastructure.Migrations
                             Quantity = 15,
                             ReferenceUrl = "https://www.liverpool.com.mx/tienda/pdp/velador-de-madera/",
                             SupplierId = 2,
-                            ThumbnailUrl = "http://localhost:5088/assets/thumbnails/velador.jpg"
+                            ThumbnailUrl = "http://localhost:5000/assets/thumbnails/velador.jpg"
                         },
                         new
                         {
@@ -239,7 +242,7 @@ namespace BienComun.Infrastructure.Migrations
                             Quantity = 8,
                             ReferenceUrl = "https://www.samsung.com/mx/tvs/",
                             SupplierId = 1,
-                            ThumbnailUrl = "http://localhost:5088/assets/thumbnails/televisor.jpg"
+                            ThumbnailUrl = "http://localhost:5000/assets/thumbnails/televisor.jpg"
                         },
                         new
                         {
@@ -252,7 +255,7 @@ namespace BienComun.Infrastructure.Migrations
                             Quantity = 12,
                             ReferenceUrl = "https://www.lg.com/mx/lavadoras",
                             SupplierId = 2,
-                            ThumbnailUrl = "http://localhost:5088/assets/thumbnails/lavadora.jpg"
+                            ThumbnailUrl = "http://localhost:5000/assets/thumbnails/lavadora.jpg"
                         },
                         new
                         {
@@ -265,7 +268,7 @@ namespace BienComun.Infrastructure.Migrations
                             Quantity = 20,
                             ReferenceUrl = "https://www.liverpool.com.mx/tienda/pdp/juego-de-vajillas/",
                             SupplierId = 1,
-                            ThumbnailUrl = "http://localhost:5088/assets/thumbnails/vajillas.jpg"
+                            ThumbnailUrl = "http://localhost:5000/assets/thumbnails/vajillas.jpg"
                         },
                         new
                         {
@@ -278,7 +281,7 @@ namespace BienComun.Infrastructure.Migrations
                             Quantity = 5,
                             ReferenceUrl = "https://www.homedepot.com.mx/herramientas/soldadoras",
                             SupplierId = 2,
-                            ThumbnailUrl = "http://localhost:5088/assets/thumbnails/soldadora.jpg"
+                            ThumbnailUrl = "http://localhost:5000/assets/thumbnails/soldadora.jpg"
                         },
                         new
                         {
@@ -291,7 +294,7 @@ namespace BienComun.Infrastructure.Migrations
                             Quantity = 14,
                             ReferenceUrl = "https://www.lg.com/mx/microondas",
                             SupplierId = 1,
-                            ThumbnailUrl = "http://localhost:5088/assets/thumbnails/microondas.jpg"
+                            ThumbnailUrl = "http://localhost:5000/assets/thumbnails/microondas.jpg"
                         },
                         new
                         {
@@ -304,7 +307,7 @@ namespace BienComun.Infrastructure.Migrations
                             Quantity = 18,
                             ReferenceUrl = "https://www.oster.com.mx/cafeteras/",
                             SupplierId = 2,
-                            ThumbnailUrl = "http://localhost:5088/assets/thumbnails/cafetera.jpg"
+                            ThumbnailUrl = "http://localhost:5000/assets/thumbnails/cafetera.jpg"
                         },
                         new
                         {
@@ -317,7 +320,7 @@ namespace BienComun.Infrastructure.Migrations
                             Quantity = 7,
                             ReferenceUrl = "https://www.liverpool.com.mx/tienda/pdp/sofa/",
                             SupplierId = 1,
-                            ThumbnailUrl = "http://localhost:5088/assets/thumbnails/sofa.jpg"
+                            ThumbnailUrl = "http://localhost:5000/assets/thumbnails/sofa.jpg"
                         },
                         new
                         {
@@ -330,7 +333,7 @@ namespace BienComun.Infrastructure.Migrations
                             Quantity = 6,
                             ReferenceUrl = "https://www.liverpool.com.mx/tienda/pdp/cama-queen-size/",
                             SupplierId = 2,
-                            ThumbnailUrl = "http://localhost:5088/assets/thumbnails/cama.jpg"
+                            ThumbnailUrl = "http://localhost:5000/assets/thumbnails/cama.jpg"
                         });
                 });
 
@@ -357,36 +360,6 @@ namespace BienComun.Infrastructure.Migrations
                     b.HasIndex("ProductId");
 
                     b.ToTable("ProductImage");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            ImageUrl = "http://localhost:5088/assets/images/refrigerador1.png",
-                            IsThumbnail = false,
-                            ProductId = 1
-                        },
-                        new
-                        {
-                            Id = 2,
-                            ImageUrl = "http://localhost:5088/assets/images/refrigerador2.png",
-                            IsThumbnail = false,
-                            ProductId = 1
-                        },
-                        new
-                        {
-                            Id = 3,
-                            ImageUrl = "http://localhost:5088/assets/images/velador1.jpg",
-                            IsThumbnail = false,
-                            ProductId = 2
-                        },
-                        new
-                        {
-                            Id = 4,
-                            ImageUrl = "http://localhost:5088/assets/images/velador2.jpg",
-                            IsThumbnail = false,
-                            ProductId = 2
-                        });
                 });
 
             modelBuilder.Entity("BienComun.Core.Entities.Supplier", b =>

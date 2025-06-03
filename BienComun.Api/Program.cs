@@ -6,7 +6,9 @@ using BIenComun.Application.Services;
 using BIenComun.Infrastructure.Data;
 using BIenComun.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.FileProviders;
 using Services;
+using System.IO;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -55,9 +57,15 @@ if (app.Environment.IsDevelopment())
 }
 app.UseCors("AllowFrontend");
 
-app.UseHttpsRedirection();
+// app.UseHttpsRedirection(); // Comentado para evitar redirección a HTTPS en desarrollo local
 
 app.UseAuthorization();
+
+app.UseStaticFiles(new StaticFileOptions
+{
+    FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), "public/assets")),
+    RequestPath = "/assets"
+});
 
 app.MapControllers();
 

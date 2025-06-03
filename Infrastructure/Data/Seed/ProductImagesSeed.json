@@ -1,0 +1,26 @@
+[
+  {
+    "Id": 1,
+    "ProductId": 1,
+    "ImageUrl": "http://localhost:5088/assets/images/refrigerador1.png",
+    "IsThumbnail": false
+  },
+  {
+    "Id": 2,
+    "ProductId": 1,
+    "ImageUrl": "http://localhost:5088/assets/images/refrigerador2.png",
+    "IsThumbnail": false
+  },
+  {
+    "Id": 3,
+    "ProductId": 2,
+    "ImageUrl": "http://localhost:5088/assets/images/velador1.jpg",
+    "IsThumbnail": false
+  },
+  {
+    "Id": 4,
+    "ProductId": 2,
+    "ImageUrl": "http://localhost:5088/assets/images/velador2.jpg",
+    "IsThumbnail": false
+  }
+]

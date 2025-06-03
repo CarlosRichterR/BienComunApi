@@ -10,6 +10,7 @@ public class ProductProfile : Profile
     {
         CreateMap<Product, ProductDto>()
             .ForMember(dest => dest.Supplier, opt => opt.MapFrom(src => src.Supplier.Name))
-            .ForMember(dest => dest.Category, opt => opt.MapFrom(src => src.Category.Name));
+            .ForMember(dest => dest.Category, opt => opt.MapFrom(src => src.Category.Name))
+            .ForMember(dest => dest.ImageUrls, opt => opt.MapFrom(src => src.Images.Select(img => img.ImageUrl).ToList()));
     }
 }

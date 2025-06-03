@@ -12,4 +12,6 @@ public class ProductDto
     public int? Quantity { get; set; }
     public string? ReferenceUrl { get; set; }
     public string Brand { get; set; } = string.Empty; // Brand of the product
+    public string ThumbnailUrl { get; set; } = string.Empty; // URL for the thumbnail image
+    public List<string> ImageUrls { get; set; } = new List<string>(); // URLs for high-quality images
 }

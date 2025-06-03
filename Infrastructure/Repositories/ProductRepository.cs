@@ -18,7 +18,9 @@ public class ProductRepository : IProductRepository
     {
         return await _context.Products
             .Include(p => p.Supplier)
-            .Include(p => p.Category).ToListAsync();
+            .Include(p => p.Category)
+            .Include(p => p.Images)
+            .ToListAsync();
     }
 
     public async Task<(IEnumerable<Product> Products, int TotalCount)> GetPaginatedProductsAsync(int page, int pageSize)
@@ -27,6 +29,7 @@ public class ProductRepository : IProductRepository
         var products = await _context.Products
             .Include(p => p.Supplier)
             .Include(p => p.Category)
+            .Include(p => p.Images)
             .Skip((page - 1) * pageSize)
             .Take(pageSize)
             .ToListAsync();

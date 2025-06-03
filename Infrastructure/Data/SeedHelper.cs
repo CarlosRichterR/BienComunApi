@@ -64,5 +64,11 @@ public static class SeedHelper
         {
             modelBuilder.Entity<Product>().HasData(productsData);
         }
+
+        var productImagesData = LoadSeedData<ProductImage>("ProductImagesSeed.json");
+        if (productImagesData.Any())
+        {
+            modelBuilder.Entity<ProductImage>().HasData(productImagesData);
+        }
     }
 }
