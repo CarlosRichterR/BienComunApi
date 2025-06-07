@@ -69,4 +69,16 @@ app.UseStaticFiles(new StaticFileOptions
 
 app.MapControllers();
 
+// Reindexar Lucene automáticamente al iniciar la aplicación si el índice está vacío
+using (var scope = app.Services.CreateScope())
+{
+    var productService = scope.ServiceProvider.GetRequiredService<IProductService>();
+    var indexPath = "lucene_index";
+    if (!System.IO.Directory.Exists(indexPath) || System.IO.Directory.GetFiles(indexPath).Length == 0)
+    {
+        await productService.RebuildProductIndexAsync();
+        Console.WriteLine("Lucene index rebuilt on startup.");
+    }
+}
+
 app.Run();

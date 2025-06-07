@@ -361,3 +361,6 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+
+# Lucene index directory (do not commit Lucene index files)
+BienComun.Api/lucene_index/

@@ -1,6 +1,7 @@
 ﻿using BienComun.Core.Entities;
 using BienComun.Core.Interfaces;
 using BienComun.Core.Repository;
+using BienComun.Core.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,5 +27,15 @@ public class ProductService : IProductService
     public async Task<(IEnumerable<Product> Products, int TotalCount)> GetPaginatedProductsAsync(int page, int pageSize)
     {
         return await _productRepository.GetPaginatedProductsAsync(page, pageSize);
+    }
+
+    public async Task<(IEnumerable<Product> Products, int TotalCount)> SearchPaginatedProductsAsync(ProductSearchRequestDto request)
+    {
+        return await _productRepository.SearchPaginatedProductsAsync(request);
+    }
+
+    public async Task RebuildProductIndexAsync()
+    {
+        await _productRepository.RebuildProductIndexAsync();
     }
 }

@@ -56,4 +56,38 @@ public class ProductsController : ControllerBase
             return StatusCode(500, $"Internal server error: {ex.Message}");
         }
     }
+
+    [HttpPost("search")]
+    public async Task<ActionResult<PaginatedResponseDto<ProductDto>>> SearchPaginatedProducts([FromBody] ProductSearchRequestDto request)
+    {
+        try
+        {
+            var result = await ((IProductService)_productService).SearchPaginatedProductsAsync(request);
+            var productDtos = _mapper.Map<IEnumerable<ProductDto>>(result.Products);
+            var response = new PaginatedResponseDto<ProductDto>
+            {
+                TotalCount = result.TotalCount,
+                Items = productDtos
+            };
+            return Ok(response);
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(500, $"Internal server error: {ex.Message}");
+        }
+    }
+
+    [HttpPost("rebuild-index")]
+    public async Task<IActionResult> RebuildProductIndex()
+    {
+        try
+        {
+            await _productService.RebuildProductIndexAsync();
+            return Ok(new { message = "Product Lucene index rebuilt successfully." });
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(500, $"Error rebuilding Lucene index: {ex.Message}");
+        }
+    }
 }
