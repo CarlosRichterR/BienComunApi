@@ -76,7 +76,7 @@ public class ProductRepository : IProductRepository
         if (!string.IsNullOrWhiteSpace(request.Search))
         {
             var searchTerm = request.Search.ToLowerInvariant();
-            var parser = new MultiFieldQueryParser(luceneVersion, new[] { "Name", "Description", "Brand" }, analyzer);
+            var parser = new MultiFieldQueryParser(luceneVersion, new[] { "Name", "Description", "Brand", "CategoryName" }, analyzer);
             // Aplica fuzzy (~) y wildcard (*) a cada palabra
             var fuzzyTerms = string.Join(" ", searchTerm.Split(' ', StringSplitOptions.RemoveEmptyEntries).Select(t => QueryParserBase.Escape(t) + "~"));
             var wildcardTerms = string.Join(" ", searchTerm.Split(' ', StringSplitOptions.RemoveEmptyEntries).Select(t => QueryParserBase.Escape(t) + "*"));
@@ -136,7 +136,8 @@ public class ProductRepository : IProductRepository
         // Limpiar el índice existente
         writer.DeleteAll();
 
-        var products = await _context.Products.ToListAsync();
+        // Incluir la categoría al obtener los productos
+        var products = await _context.Products.Include(p => p.Category).ToListAsync();
         foreach (var product in products)
         {
             var doc = new Lucene.Net.Documents.Document
@@ -145,7 +146,8 @@ public class ProductRepository : IProductRepository
                 new Lucene.Net.Documents.TextField("Name", product.Name?.ToLowerInvariant() ?? string.Empty, Lucene.Net.Documents.Field.Store.NO),
                 new Lucene.Net.Documents.TextField("Description", product.Description?.ToLowerInvariant() ?? string.Empty, Lucene.Net.Documents.Field.Store.NO),
                 new Lucene.Net.Documents.TextField("Brand", product.Brand?.ToLowerInvariant() ?? string.Empty, Lucene.Net.Documents.Field.Store.NO),
-                new Lucene.Net.Documents.Int32Field("SupplierId", product.SupplierId, Lucene.Net.Documents.Field.Store.NO)
+                new Lucene.Net.Documents.Int32Field("SupplierId", product.SupplierId, Lucene.Net.Documents.Field.Store.NO),
+                new Lucene.Net.Documents.TextField("CategoryName", product.Category?.Name?.ToLowerInvariant() ?? string.Empty, Lucene.Net.Documents.Field.Store.NO)
             };
             writer.AddDocument(doc);
         }
