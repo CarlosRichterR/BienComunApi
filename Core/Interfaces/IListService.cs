@@ -10,4 +10,6 @@ namespace BienComun.Core.Interfaces;
 public interface IListService
 {
     Task CreateListAsync(CreateListRequest request);
+    Task<List<BienComun.Core.Entities.GiftList>> GetAllListsAsync();
+    Task DeleteListAsync(int id);
 }

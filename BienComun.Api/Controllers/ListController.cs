@@ -23,4 +23,18 @@ public class ListController : ControllerBase
         return Ok();
     }
 
+    [HttpGet]
+    public async Task<IActionResult> GetAllLists()
+    {
+        var lists = await _listService.GetAllListsAsync();
+        return Ok(lists);
+    }
+
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> DeleteList(int id)
+    {
+        await _listService.DeleteListAsync(id);
+        return NoContent();
+    }
+
 }

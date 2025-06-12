@@ -51,4 +51,14 @@ public class ListService : IListService
 
         await _listRepository.AddAsync(list);
     }
+
+    public async Task<List<GiftList>> GetAllListsAsync()
+    {
+        return await _listRepository.GetAllAsync();
+    }
+
+    public async Task DeleteListAsync(int id)
+    {
+        await _listRepository.DeleteAsync(id);
+    }
 }

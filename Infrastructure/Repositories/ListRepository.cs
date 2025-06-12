@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace BienComun.Infrastructure.Repositories
 {
@@ -22,6 +23,21 @@ namespace BienComun.Infrastructure.Repositories
         {
             await _context.GiftLists.AddAsync(list);
             await _context.SaveChangesAsync();
+        }
+
+        public async Task<List<GiftList>> GetAllAsync()
+        {
+            return await _context.GiftLists.ToListAsync();
+        }
+
+        public async Task DeleteAsync(int id)
+        {
+            var list = await _context.GiftLists.FindAsync(id);
+            if (list != null)
+            {
+                _context.GiftLists.Remove(list);
+                await _context.SaveChangesAsync();
+            }
         }
 
         // Puedes agregar más métodos según sea necesario
