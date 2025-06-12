@@ -8,5 +8,6 @@ public interface IProductService
     Task<IEnumerable<Product>> GetProductsAsync();
     Task<(IEnumerable<Product> Products, int TotalCount)> GetPaginatedProductsAsync(int page, int pageSize);
     Task<(IEnumerable<Product> Products, int TotalCount)> SearchPaginatedProductsAsync(ProductSearchRequestDto request);
+    Task<(IEnumerable<Product> Products, int TotalCount)> SearchPaginatedProductsAdvancedAsync(ProductSearchRequestDto request);
     Task RebuildProductIndexAsync();
 }

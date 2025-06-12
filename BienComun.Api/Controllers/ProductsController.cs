@@ -62,7 +62,15 @@ public class ProductsController : ControllerBase
     {
         try
         {
-            var result = await ((IProductService)_productService).SearchPaginatedProductsAsync(request);
+            (IEnumerable<Product> Products, int TotalCount) result;
+            if (request.IsAdvancedSearch)
+            {
+                result = await _productService.SearchPaginatedProductsAdvancedAsync(request);
+            }
+            else
+            {
+                result = await _productService.SearchPaginatedProductsAsync(request);
+            }
             var productDtos = _mapper.Map<IEnumerable<ProductDto>>(result.Products);
             var response = new PaginatedResponseDto<ProductDto>
             {

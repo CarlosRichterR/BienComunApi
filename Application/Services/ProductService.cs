@@ -34,6 +34,11 @@ public class ProductService : IProductService
         return await _productRepository.SearchPaginatedProductsAsync(request);
     }
 
+    public async Task<(IEnumerable<Product> Products, int TotalCount)> SearchPaginatedProductsAdvancedAsync(ProductSearchRequestDto request)
+    {
+        return await _productRepository.SearchPaginatedProductsAdvancedAsync(request);
+    }
+
     public async Task RebuildProductIndexAsync()
     {
         await _productRepository.RebuildProductIndexAsync();

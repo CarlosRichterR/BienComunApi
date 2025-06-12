@@ -46,6 +46,11 @@ public class ProductRepository : IProductRepository
 
     public async Task<(IEnumerable<Product> Products, int TotalCount)> SearchPaginatedProductsAsync(ProductSearchRequestDto request)
     {
+        // Si la búsqueda avanzada está activada, redirigir a la función avanzada
+        if (request.IsAdvancedSearch)
+        {
+            return await SearchPaginatedProductsAdvancedAsync(request);
+        }
         var luceneVersion = LuceneVersion.LUCENE_48;
         var indexPath = "lucene_index";
         if (!System.IO.Directory.Exists(indexPath))
@@ -76,7 +81,7 @@ public class ProductRepository : IProductRepository
         if (!string.IsNullOrWhiteSpace(request.Search))
         {
             var searchTerm = request.Search.ToLowerInvariant();
-            var parser = new MultiFieldQueryParser(luceneVersion, new[] { "Name", "Description", "Brand", "CategoryName" }, analyzer);
+            var parser = new MultiFieldQueryParser(luceneVersion, new[] { "Name", "Description", "Brand", "CategoryName", "SupplierName" }, analyzer);
             // Aplica fuzzy (~) y wildcard (*) a cada palabra
             var fuzzyTerms = string.Join(" ", searchTerm.Split(' ', StringSplitOptions.RemoveEmptyEntries).Select(t => QueryParserBase.Escape(t) + "~"));
             var wildcardTerms = string.Join(" ", searchTerm.Split(' ', StringSplitOptions.RemoveEmptyEntries).Select(t => QueryParserBase.Escape(t) + "*"));
@@ -93,6 +98,24 @@ public class ProductRepository : IProductRepository
         {
             var supplierQuery = NumericRangeQuery.NewInt32Range("SupplierId", request.SupplierId.Value, request.SupplierId.Value, true, true);
             query.Add(supplierQuery, Occur.MUST);
+        }
+        // Búsqueda por nombre de proveedor (fuzzy)
+        if (!string.IsNullOrWhiteSpace(request.Search))
+        {
+            // Si el término de búsqueda coincide con algún proveedor
+            var matchingSuppliers = await _context.Suppliers
+                .Where(s => s.Name.ToLower().Contains(request.Search.ToLower()))
+                .Select(s => s.Id)
+                .ToListAsync();
+            if (matchingSuppliers.Any())
+            {
+                var supplierNameQuery = new BooleanQuery();
+                foreach (var id in matchingSuppliers)
+                {
+                    supplierNameQuery.Add(NumericRangeQuery.NewInt32Range("SupplierId", id, id, true, true), Occur.SHOULD);
+                }
+                query.Add(supplierNameQuery, Occur.SHOULD);
+            }
         }
 
         // Search Lucene index
@@ -119,6 +142,58 @@ public class ProductRepository : IProductRepository
         return (products, (int)totalCount);
     }
 
+    public async Task<(IEnumerable<Product> Products, int TotalCount)> SearchPaginatedProductsAdvancedAsync(ProductSearchRequestDto request)
+    {
+        var query = _context.Products
+            .Include(p => p.Supplier)
+            .Include(p => p.Category)
+            .Include(p => p.Images)
+            .AsQueryable();
+
+        // Aplica primero los filtros avanzados
+        if (request.CategoryIds != null && request.CategoryIds.Any())
+        {
+            query = query.Where(p => request.CategoryIds.Contains(p.CategoryId));
+        }
+        if (request.SupplierIds != null && request.SupplierIds.Any())
+        {
+            query = query.Where(p => request.SupplierIds.Contains(p.SupplierId));
+        }
+        if (request.PriceRange != null && request.PriceRange.Length == 2)
+        {
+            decimal min = request.PriceRange[0];
+            decimal max = request.PriceRange[1];
+            query = query.Where(p => p.Price >= min && p.Price <= max);
+        }
+        if (!string.IsNullOrWhiteSpace(request.Brand))
+        {
+            query = query.Where(p => p.Brand.ToLower() == request.Brand.ToLower());
+        }
+        if (request.SupplierId.HasValue)
+        {
+            query = query.Where(p => p.SupplierId == request.SupplierId.Value);
+        }
+
+        // Solo aplica el filtro de búsqueda si hay término de búsqueda
+        if (!string.IsNullOrWhiteSpace(request.Search))
+        {
+            var searchTerm = request.Search.ToLower();
+            query = query.Where(p =>
+                p.Name.ToLower().Contains(searchTerm) ||
+                p.Description.ToLower().Contains(searchTerm) ||
+                p.Brand.ToLower().Contains(searchTerm) ||
+                p.Category.Name.ToLower().Contains(searchTerm) ||
+                p.Supplier.Name.ToLower().Contains(searchTerm)
+            );
+        }
+
+        var totalCount = await query.CountAsync();
+        int skip = (request.Page.HasValue && request.PageSize.HasValue) ? (request.Page.Value - 1) * request.PageSize.Value : 0;
+        int take = (request.Page.HasValue && request.PageSize.HasValue) ? request.PageSize.Value : 1000;
+        var products = await query.Skip(skip).Take(take).ToListAsync();
+        return (products, totalCount);
+    }
+
     // Método para reindexar todos los productos en Lucene
     public async Task RebuildProductIndexAsync()
     {
@@ -136,8 +211,8 @@ public class ProductRepository : IProductRepository
         // Limpiar el índice existente
         writer.DeleteAll();
 
-        // Incluir la categoría al obtener los productos
-        var products = await _context.Products.Include(p => p.Category).ToListAsync();
+        // Incluir la categoría y el nombre del proveedor al obtener los productos
+        var products = await _context.Products.Include(p => p.Category).Include(p => p.Supplier).ToListAsync();
         foreach (var product in products)
         {
             var doc = new Lucene.Net.Documents.Document
@@ -147,7 +222,8 @@ public class ProductRepository : IProductRepository
                 new Lucene.Net.Documents.TextField("Description", product.Description?.ToLowerInvariant() ?? string.Empty, Lucene.Net.Documents.Field.Store.NO),
                 new Lucene.Net.Documents.TextField("Brand", product.Brand?.ToLowerInvariant() ?? string.Empty, Lucene.Net.Documents.Field.Store.NO),
                 new Lucene.Net.Documents.Int32Field("SupplierId", product.SupplierId, Lucene.Net.Documents.Field.Store.NO),
-                new Lucene.Net.Documents.TextField("CategoryName", product.Category?.Name?.ToLowerInvariant() ?? string.Empty, Lucene.Net.Documents.Field.Store.NO)
+                new Lucene.Net.Documents.TextField("CategoryName", product.Category?.Name?.ToLowerInvariant() ?? string.Empty, Lucene.Net.Documents.Field.Store.NO),
+                new Lucene.Net.Documents.TextField("SupplierName", product.Supplier?.Name?.ToLowerInvariant() ?? string.Empty, Lucene.Net.Documents.Field.Store.NO)
             };
             writer.AddDocument(doc);
         }
