@@ -27,7 +27,9 @@ namespace BienComun.Infrastructure.Repositories
 
         public async Task<List<GiftList>> GetAllAsync()
         {
-            return await _context.GiftLists.ToListAsync();
+            return await _context.GiftLists
+                .Include(l => l.Products)
+                .ToListAsync();
         }
 
         public async Task DeleteAsync(int id)

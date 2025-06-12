@@ -52,9 +52,31 @@ public class ListService : IListService
         await _listRepository.AddAsync(list);
     }
 
-    public async Task<List<GiftList>> GetAllListsAsync()
+    public async Task<List<GiftListSummaryDto>> GetAllListsAsync()
     {
-        return await _listRepository.GetAllAsync();
+        var lists = await _listRepository.GetAllAsync();
+        return lists.Select(list => new GiftListSummaryDto
+        {
+            Id = list.Id,
+            ListName = list.ListName,
+            EventType = (int)list.EventType,
+            CustomEventType = list.CustomEventType,
+            ListStatus = list.ListStatus,
+            GuestCount = list.GuestCount,
+            MinContribution = list.MinContribution,
+            EventDate = list.EventDate,
+            CampaignStartDate = list.CampaignStartDate,
+            CampaignStartTime = list.CampaignStartTime,
+            CampaignEndDate = list.CampaignEndDate,
+            CampaignEndTime = list.CampaignEndTime,
+            Location = list.Location,
+            Address = list.Address,
+            Email = list.Email,
+            Phone = list.Phone,
+            UseMinContribution = list.UseMinContribution,
+            TermsAccepted = list.TermsAccepted,
+            ProductCount = list.Products?.Sum(p => p.Quantity) ?? 0
+        }).ToList();
     }
 
     public async Task DeleteListAsync(int id)
