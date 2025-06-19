@@ -57,6 +57,12 @@ namespace BienComun.Infrastructure.Repositories
                 .FirstOrDefaultAsync(l => l.Id == id);
         }
 
+        public async Task UpdateAsync(GiftList list)
+        {
+            _context.GiftLists.Update(list);
+            await _context.SaveChangesAsync();
+        }
+
         // Puedes agregar más métodos según sea necesario
     }
 }

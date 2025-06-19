@@ -79,11 +79,6 @@ public class ListService : IListService
         }).ToList();
     }
 
-    public async Task DeleteListAsync(int id)
-    {
-        await _listRepository.DeleteAsync(id);
-    }
-
     public async Task<GiftListWithProductsDto?> GetListWithProductsAsync(int id)
     {
         var list = await _listRepository.GetByIdWithProductsAsync(id);
@@ -127,5 +122,51 @@ public class ListService : IListService
                 }).ToList()
         };
         return dto;
+    }
+
+    public async Task UpdateListAsync(int id, CreateListRequest request)
+    {
+        var existingList = await _listRepository.GetByIdWithProductsAsync(id);
+        if (existingList == null) return;
+
+        // Actualizar propiedades básicas
+        existingList.EventType = request.EventTypeDTO.EventType;
+        existingList.CustomEventType = request.EventTypeDTO.CustomEventType;
+        existingList.ListStatus = request.ListStatus;
+        existingList.GuestCount = request.GuestCount;
+        existingList.MinContribution = request.MinContribution;
+        existingList.ListName = request.ListDetails?.ListName;
+        existingList.EventDate = request.ListDetails?.EventDate;
+        existingList.CampaignStartDate = request.ListDetails?.CampaignStartDate;
+        existingList.CampaignStartTime = request.ListDetails?.CampaignStartTime;
+        existingList.CampaignEndDate = request.ListDetails?.CampaignEndDate;
+        existingList.CampaignEndTime = request.ListDetails?.CampaignEndTime;
+        existingList.Location = request.ListDetails?.Location;
+        existingList.Address = request.ListDetails?.Address;
+        existingList.Email = request.ConfirmationData?.Email;
+        existingList.Phone = request.ConfirmationData?.Phone;
+        existingList.UseMinContribution = request.ConfirmationData?.UseMinContribution ?? false;
+        existingList.TermsAccepted = request.ConfirmationData?.TermsAccepted ?? false;
+
+        // Actualizar productos: eliminar todos los existentes y agregar los nuevos
+        existingList.Products.Clear();
+        var newProducts = request.Products.Select(p => new GiftListProduct
+        {
+            ProductId = p.ProductId,
+            Quantity = p.Quantity,
+            GiftListId = id
+        }).ToList();
+        
+        foreach (var product in newProducts)
+        {
+            existingList.Products.Add(product);
+        }
+
+        await _listRepository.UpdateAsync(existingList);
+    }
+
+    public async Task DeleteListAsync(int id)
+    {
+        await _listRepository.DeleteAsync(id);
     }
 }

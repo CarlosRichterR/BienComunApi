@@ -45,4 +45,11 @@ public class ListController : ControllerBase
         return Ok(list);
     }
 
+    [HttpPut("{id}")]
+    public async Task<IActionResult> UpdateList(int id, [FromBody] CreateListRequest request)
+    {
+        await _listService.UpdateListAsync(id, request);
+        return Ok();
+    }
+
 }
