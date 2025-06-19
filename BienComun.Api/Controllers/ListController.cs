@@ -37,4 +37,12 @@ public class ListController : ControllerBase
         return NoContent();
     }
 
+    [HttpGet("{id}")]
+    public async Task<IActionResult> GetListWithProducts(int id)
+    {
+        var list = await _listService.GetListWithProductsAsync(id);
+        if (list == null) return NotFound();
+        return Ok(list);
+    }
+
 }

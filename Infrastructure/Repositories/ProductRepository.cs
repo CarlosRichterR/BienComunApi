@@ -103,7 +103,7 @@ public class ProductRepository : IProductRepository
         if (!string.IsNullOrWhiteSpace(request.Search))
         {
             // Si el término de búsqueda coincide con algún proveedor
-            var matchingSuppliers = await _context.Suppliers
+             var matchingSuppliers = await _context.Suppliers
                 .Where(s => s.Name.ToLower().Contains(request.Search.ToLower()))
                 .Select(s => s.Id)
                 .ToListAsync();

@@ -12,4 +12,5 @@ public interface IListService
     Task CreateListAsync(CreateListRequest request);
     Task<List<BienComun.Core.DTOs.GiftListSummaryDto>> GetAllListsAsync();
     Task DeleteListAsync(int id);
+    Task<GiftListWithProductsDto?> GetListWithProductsAsync(int id);
 }

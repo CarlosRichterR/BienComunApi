@@ -83,4 +83,49 @@ public class ListService : IListService
     {
         await _listRepository.DeleteAsync(id);
     }
+
+    public async Task<GiftListWithProductsDto?> GetListWithProductsAsync(int id)
+    {
+        var list = await _listRepository.GetByIdWithProductsAsync(id);
+        if (list == null) return null;
+        var dto = new GiftListWithProductsDto
+        {
+            Id = list.Id,
+            ListName = list.ListName,
+            EventType = (int)list.EventType,
+            CustomEventType = list.CustomEventType,
+            ListStatus = list.ListStatus,
+            GuestCount = list.GuestCount,
+            MinContribution = list.MinContribution,
+            Address = list.Address,
+            Email = list.Email,
+            Phone = list.Phone,
+            UseMinContribution = list.UseMinContribution,
+            TermsAccepted = list.TermsAccepted,
+            EventDate = list.EventDate,
+            CampaignStartDate = list.CampaignStartDate,
+            CampaignStartTime = list.CampaignStartTime,
+            CampaignEndDate = list.CampaignEndDate,
+            CampaignEndTime = list.CampaignEndTime,
+            Location = list.Location,
+            Products = list.Products
+                .Where(p => p.Product != null)
+                .Select(p => new ProductDto
+                {
+                    Id = p.Product.Id,
+                    Name = p.Product.Name,
+                    Description = p.Product.Description,
+                    Price = p.Product.Price,
+                    Supplier = p.Product.Supplier?.Name ?? string.Empty,
+                    Category = p.Product.Category?.Name ?? string.Empty,
+                    ImageUrl = p.Product.ThumbnailUrl,
+                    Quantity = p.Quantity,
+                    ReferenceUrl = p.Product.ReferenceUrl,
+                    Brand = p.Product.Brand,
+                    ThumbnailUrl = p.Product.ThumbnailUrl,
+                    ImageUrls = p.Product.Images?.Select(img => img.ImageUrl).ToList() ?? new List<string>()
+                }).ToList()
+        };
+        return dto;
+    }
 }

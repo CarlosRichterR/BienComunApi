@@ -42,6 +42,21 @@ namespace BienComun.Infrastructure.Repositories
             }
         }
 
+        public async Task<GiftList?> GetByIdWithProductsAsync(int id)
+        {
+            return await _context.GiftLists
+                .Include(l => l.Products)
+                    .ThenInclude(glp => glp.Product)
+                        .ThenInclude(p => p.Images)
+                .Include(l => l.Products)
+                    .ThenInclude(glp => glp.Product)
+                        .ThenInclude(p => p.Category)
+                .Include(l => l.Products)
+                    .ThenInclude(glp => glp.Product)
+                        .ThenInclude(p => p.Supplier)
+                .FirstOrDefaultAsync(l => l.Id == id);
+        }
+
         // Puedes agregar más métodos según sea necesario
     }
 }
