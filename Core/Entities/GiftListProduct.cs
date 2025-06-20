@@ -17,4 +17,6 @@ public class GiftListProduct
     public virtual Product Product { get; set; }
 
     public int Quantity { get; set; }
+
+    public virtual ICollection<Contribution> Contributions { get; set; } = new List<Contribution>();
 }

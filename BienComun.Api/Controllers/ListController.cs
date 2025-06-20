@@ -52,4 +52,12 @@ public class ListController : ControllerBase
         return Ok();
     }
 
+    [HttpGet("{id}/contributions")]
+    public async Task<IActionResult> GetListWithContributions(int id)
+    {
+        var contributions = await _listService.GetListProductContributionsAsync(id);
+        if (contributions == null || !contributions.Any()) return NotFound();
+        return Ok(contributions);
+    }
+
 }

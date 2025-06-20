@@ -18,6 +18,8 @@ namespace BIenComun.Infrastructure.Data
         public DbSet<GiftList> GiftLists { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Supplier> Suppliers { get; set; }
+        public DbSet<GiftListProduct> GiftListProducts { get; set; }
+        public DbSet<Contribution> Contributions { get; set; }
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {
         }

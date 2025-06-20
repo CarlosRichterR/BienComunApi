@@ -169,4 +169,17 @@ public class ListService : IListService
     {
         await _listRepository.DeleteAsync(id);
     }
+
+    public async Task<List<ProductContributionDto>> GetListProductContributionsAsync(int listId)
+    {
+        var products = await _listRepository.GetProductsWithContributionsAsync(listId);
+        var result = products.Select(p => new ProductContributionDto
+        {
+            ProductId = p.ProductId,
+            ProductName = p.Product?.Name ?? string.Empty,
+            TotalContributed = p.Contributions?.Sum(c => c.Amount) ?? 0,
+            Quantity = p.Quantity
+        }).ToList();
+        return result;
+    }
 }

@@ -9,4 +9,5 @@ public interface IListRepository
     Task<GiftList?> GetByIdWithProductsAsync(int id);
     Task UpdateAsync(GiftList list);
     Task DeleteAsync(int id);
+    Task<List<GiftListProduct>> GetProductsWithContributionsAsync(int listId);
 }

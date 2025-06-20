@@ -3,6 +3,7 @@ using System;
 using BIenComun.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace BienComun.Infrastructure.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250620032816_AddContributionEntity")]
+    partial class AddContributionEntity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -90,7 +93,7 @@ namespace BienComun.Infrastructure.Migrations
 
                     b.HasIndex("GiftListProductId");
 
-                    b.ToTable("Contributions");
+                    b.ToTable("Contribution");
                 });
 
             modelBuilder.Entity("BienComun.Core.Entities.GiftList", b =>
@@ -181,7 +184,7 @@ namespace BienComun.Infrastructure.Migrations
 
                     b.HasIndex("ProductId");
 
-                    b.ToTable("GiftListProducts");
+                    b.ToTable("GiftListProduct");
                 });
 
             modelBuilder.Entity("BienComun.Core.Entities.Product", b =>

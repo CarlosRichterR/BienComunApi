@@ -14,4 +14,5 @@ public interface IListService
     Task<GiftListWithProductsDto?> GetListWithProductsAsync(int id);
     Task UpdateListAsync(int id, CreateListRequest request);
     Task DeleteListAsync(int id);
+    Task<List<ProductContributionDto>> GetListProductContributionsAsync(int listId);
 }

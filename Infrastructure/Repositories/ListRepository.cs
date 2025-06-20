@@ -63,6 +63,15 @@ namespace BienComun.Infrastructure.Repositories
             await _context.SaveChangesAsync();
         }
 
+        public async Task<List<GiftListProduct>> GetProductsWithContributionsAsync(int listId)
+        {
+            return await _context.GiftListProducts
+                .Include(glp => glp.Contributions)
+                .Include(glp => glp.Product)
+                .Where(glp => glp.GiftListId == listId)
+                .ToListAsync();
+        }
+
         // Puedes agregar más métodos según sea necesario
     }
 }
